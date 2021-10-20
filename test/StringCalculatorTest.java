@@ -4,13 +4,13 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
+/*If the string starts with E, only even numbers should be added, if it starts with O, only odd numbers should be added
+Input:“E1,2,3” Output: 2
+Input: “O1,2,3” Output: 4*/
 
-/**
- * Created by brandonteng on 12/14/14.
- */
 public class StringCalculatorTest {
 
-    private StringCalculator calculator;
+    private StringCalculator calculator;	
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -57,9 +57,15 @@ public class StringCalculatorTest {
         calculator.add("-5,10\n-15");
     }
 
+    
     @Test
     public void numbersGreaterThan1000AreIgnored() {
         assertEquals(calculator.add("5,12,1001"), 17);
         assertEquals(calculator.add("14124,22\n4,1214"), 26);
+    }
+    @Test
+    public void numberStrartsWithEAndOReturnEventNumberNumber() {
+        assertEquals(calculator.add("E1,2,3"), 2);
+        assertEquals(calculator.add("O1,2,3"), 4);
     }
 }

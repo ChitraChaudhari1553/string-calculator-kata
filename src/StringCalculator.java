@@ -12,6 +12,26 @@ public class StringCalculator {
 
     private int getSum(String[] numbers) {
         int sum = 0;
+        if(numbers[0].startsWith("E")==true)
+        {
+        	for (String currentNumber:numbers) {
+                if (stringToInt(currentNumber) %2!=0 && stringToInt(currentNumber) > 1000) {
+                    continue;
+                }
+                sum += stringToInt(currentNumber);
+            }
+        	return sum;
+        }
+        else if(numbers[0].startsWith("O")==true)
+        {
+        	for (String currentNumber:numbers) {
+                if (stringToInt(currentNumber) %2==0 && stringToInt(currentNumber) > 1000) {
+                    continue;
+                }
+                sum += stringToInt(currentNumber);
+            }
+        	return sum;
+        }else {
         for (String currentNumber:numbers) {
             if (stringToInt(currentNumber) > 1000) {
                 continue;
@@ -19,6 +39,7 @@ public class StringCalculator {
             sum += stringToInt(currentNumber);
         }
         return sum;
+        }
     }
 
     private int stringToInt(String number) {
